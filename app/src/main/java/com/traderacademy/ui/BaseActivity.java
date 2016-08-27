@@ -21,8 +21,9 @@ public abstract class BaseActivity extends AppCompatActivity {
     private View content;
     public Toolbar bar;
     private int statusBarHeight = 0;
-    private TextView centerText;
+    private TextView centerText, leftText;
     public View barDivider;
+    private onLeftTextClick listener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
         main = (FrameLayout) findViewById(R.id.main);
         centerText = (TextView) findViewById(R.id.centerText);
+        leftText = (TextView) findViewById(R.id.leftText);
 
         bar = (Toolbar) findViewById(R.id.toolbar);
         barDivider = findViewById(R.id.toolbar_divider);
@@ -71,6 +73,12 @@ public abstract class BaseActivity extends AppCompatActivity {
                 onCenterTextClick();
             }
         });
+        leftText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               listener.onLeftClick();
+            }
+        });
 
     }
 
@@ -97,10 +105,18 @@ public abstract class BaseActivity extends AppCompatActivity {
             content.setLayoutParams(cparams);
         }
     }
+    /**
+     * 设置具体点击监听器
+     * @param listener 点击监听器实现类
+     */
+    public void setOnLeftClickListener(onLeftTextClick listener) {
+        this.listener = listener;
+    }
 
     public void hideToolBar() {
         this.resetToolBar();
         this.setCenterTextView("");
+        this.setLeftTextView("");
         this.setBackgroundAlpha(0.0f);
         this.setFullscreen();
     }
@@ -119,6 +135,15 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void setCenterTextView(String text) {
         centerText.setVisibility(View.VISIBLE);
         centerText.setText(text);
+    }
+
+    public void setLeftTextView(int resId) {
+        setLeftTextView(getResources().getString(resId));
+    }
+
+    public void setLeftTextView(String text) {
+        leftText.setVisibility(View.VISIBLE);
+        leftText.setText(text);
     }
 
     public void setCenterTextRightDrawble(int resId) {
@@ -176,6 +201,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    public void onLeftTextClick() {
+    }
+
     public abstract void setToolBar(Toolbar bar);
 
     public abstract int setContentView();
@@ -184,5 +212,9 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public View getContentView() {
         return null;
+    }
+
+    public interface  onLeftTextClick{
+        void onLeftClick();
     }
 }

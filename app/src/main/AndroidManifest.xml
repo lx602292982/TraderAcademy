@@ -16,11 +16,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.start.LoginActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".ui.start.LoginActivity"
+            android:launchMode="singleTask" />
 
-        <activity android:name=".ui.home.HomeActivity"
-            android:launchMode="singleTask"/>
+        <activity
+            android:name=".ui.home.HomeActivity"
+            android:launchMode="singleTask" />
     </application>
 
 </manifest>

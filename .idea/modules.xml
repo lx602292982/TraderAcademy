@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TraderAcademy.iml" filepath="$PROJECT_DIR$/TraderAcademy.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bottom-bar/bottom-bar.iml" filepath="$PROJECT_DIR$/bottom-bar/bottom-bar.iml" />
     </modules>
   </component>
 </project>

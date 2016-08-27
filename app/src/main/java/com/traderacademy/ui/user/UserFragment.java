@@ -1,5 +1,4 @@
-package com.traderacademy.ui.home;
-
+package com.traderacademy.ui.user;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,21 +8,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.traderacademy.R;
+import com.traderacademy.ui.home.HomeFragment;
 
 /**
- * Created by lixiang on 16/8/26.
+ * 作者：lixiang on 2016/8/27 11:40
+ * 邮箱：xiang.li@spreadwin.com
  */
-public class HomeFragment extends Fragment {
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
-        return v;
-    }
-
+public class UserFragment extends Fragment {
     private static final String ARG_POSITION = "position";
 
     private int position;
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_user, container, false);
+        return v;
+    }
 
     public static HomeFragment newInstance(int position) {
         HomeFragment f = new HomeFragment();
@@ -32,5 +32,4 @@ public class HomeFragment extends Fragment {
         f.setArguments(b);
         return f;
     }
-
 }

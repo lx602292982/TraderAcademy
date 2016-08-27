@@ -1,7 +1,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -9,7 +9,18 @@
         android:layout_height="48dp"
         android:background="@color/colorAccent"
         android:gravity="center"
-        android:minHeight="48dp" >
+        android:minHeight="48dp">
+
+        <TextView
+            android:id="@+id/leftText"
+            style="@style/ToolBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:visibility="gone"
+            android:textSize="@dimen/base_text_size"
+            android:singleLine="true"
+             />
 
         <TextView
             android:id="@+id/centerText"
@@ -22,11 +33,12 @@
 
 
     </android.support.v7.widget.Toolbar>
+
     <View
         android:id="@+id/toolbar_divider"
         android:layout_width="match_parent"
-        android:layout_marginTop="47.6dp"
         android:layout_height="@dimen/divider"
+        android:layout_marginTop="47.6dp"
         android:background="@color/grey_c" />
 
 </FrameLayout>

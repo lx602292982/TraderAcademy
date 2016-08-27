@@ -5,4 +5,12 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textColor="@color/grey_6a"
+        android:gravity="center"
+        android:text="1"
+        android:textSize="@dimen/base_text_size"/>
+
 </LinearLayout>
