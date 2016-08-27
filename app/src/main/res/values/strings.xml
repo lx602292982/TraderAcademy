@@ -1,7 +1,11 @@
 <resources>
-    <string name="app_name">TraderAcademy</string>
+    <string name="app_name">商学院</string>
 
     <string name="app_shared_preferences">TraderAcademy_2016</string>
 
-
+    <string name="login">登录</string>
+    <string name="phone_num">手机号</string>
+    <string name="phone_hint">11位手机号码</string>
+    <string name="password">密码</string>
+    <string name="password_hint">4-16位密码</string>
 </resources>

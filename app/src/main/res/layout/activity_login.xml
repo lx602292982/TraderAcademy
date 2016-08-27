@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.traderacademy.supprot.view.ResizeLayout
+        android:id="@+id/resize"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:id="@+id/scroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="240dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/edittext_grey_border"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/phone_text"
+                        style="@style/edittext_style"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/edittext_height"
+                        android:gravity="center"
+                        android:text="@string/phone_num" />
+
+                    <EditText
+                        android:id="@+id/phone_num"
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edittext_height"
+                        android:layout_toRightOf="@id/phone_text"
+                        android:background="@null"
+                        android:hint="@string/phone_hint"
+                        android:inputType="number"
+                        android:maxLength="11"
+                        android:textCursorDrawable="@drawable/color_cursor" >
+
+                        <requestFocus />
+                    </EditText>
+
+                    <include
+                        android:id="@+id/divider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/divider"
+                        android:layout_below="@id/phone_text"
+                        layout="@layout/vertical_divider" />
+
+                    <TextView
+                        android:id="@+id/pwd_text"
+                        style="@style/edittext_style"
+                        android:layout_width="80dp"
+                        android:layout_height="@dimen/edittext_height"
+                        android:layout_below="@id/divider"
+                        android:gravity="center"
+                        android:text="@string/password" />
+
+                    <EditText
+                        android:id="@+id/password"
+                        style="@style/edittext_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/edittext_height"
+                        android:layout_below="@id/divider"
+                        android:layout_toRightOf="@id/pwd_text"
+                        android:background="@null"
+                        android:hint="@string/password_hint"
+                        android:inputType="textPassword"
+                        android:maxLength="16"
+                        android:textCursorDrawable="@drawable/color_cursor" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/login"
+                    style="@style/blue_button"
+                    android:layout_width="match_parent"
+                    android:onClick="login"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_margin="@dimen/layout_padding"
+                    android:layout_marginTop="@dimen/button_height"
+                    android:text="@string/login" />
+            </LinearLayout>
+        </ScrollView>
+    </com.traderacademy.supprot.view.ResizeLayout>
+</LinearLayout>
