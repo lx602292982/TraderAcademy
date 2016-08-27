@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/bb_menu_recents"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_home"
         android:title="首页" />
     <item
         android:id="@+id/bb_menu_favorites"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_learn"
         android:title="学习" />
     <item
         android:id="@+id/bb_menu_nearby"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_exam"
         android:title="考试" />
     <item
         android:id="@+id/bb_menu_friends"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_user"
         android:title="个人" />
 
 </menu>

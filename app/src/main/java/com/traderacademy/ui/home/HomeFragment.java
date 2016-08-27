@@ -33,14 +33,17 @@ public class HomeFragment extends Fragment {
 
     private void initView(View v) {
         kanner = (Kanner) v.findViewById(R.id.kanner);
-        kanner.setImagesUrl(new String[]{
-                "http://img04.muzhiwan.com/2015/06/16/upload_557fd293326f5.jpg",
-                "http://img03.muzhiwan.com/2015/06/05/upload_557165f4850cf.png",
-                "http://img02.muzhiwan.com/2015/06/11/upload_557903dc0f165.jpg",
-                "http://img04.muzhiwan.com/2015/06/05/upload_5571659957d90.png",
-                "http://img03.muzhiwan.com/2015/06/16/upload_557fd2a8da7a3.jpg"});
+//        kanner.setImagesUrl(new String[]{
+//                "http://img04.muzhiwan.com/2015/06/16/upload_557fd293326f5.jpg",
+//                "http://img03.muzhiwan.com/2015/06/05/upload_557165f4850cf.png",
+//                "http://img02.muzhiwan.com/2015/06/11/upload_557903dc0f165.jpg",
+//                "http://img04.muzhiwan.com/2015/06/05/upload_5571659957d90.png",
+//                "http://img03.muzhiwan.com/2015/06/16/upload_557fd2a8da7a3.jpg"});
+//    }
+        int[] imagesRes = {R.mipmap.image1, R.mipmap.iamge2, R.mipmap.iamge3,
+                R.mipmap.iamge4, R.mipmap.iamge5};
+        kanner.setImagesRes(imagesRes);
     }
-
 
     public static HomeFragment newInstance(int position) {
         HomeFragment f = new HomeFragment();

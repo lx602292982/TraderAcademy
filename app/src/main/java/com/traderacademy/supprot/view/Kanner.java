@@ -85,8 +85,8 @@ public class Kanner extends FrameLayout {
         for (int i = 0; i < count; i++) {
             ImageView iv_dot = new ImageView(context);
             LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT);
+                    30,
+                    30);
             params.leftMargin = 5;
             params.rightMargin = 5;
             iv_dot.setImageResource(R.drawable.dot_blur);
@@ -161,8 +161,8 @@ public class Kanner extends FrameLayout {
                 .diskCacheFileNameGenerator(new Md5FileNameGenerator())
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .writeDebugLogs().build();
-        com.nostra13.universalimageloader.core.ImageLoader.getInstance().init(config);
-        mImageLoader = com.nostra13.universalimageloader.core.ImageLoader.getInstance();
+        ImageLoader.getInstance().init(config);
+        mImageLoader = ImageLoader.getInstance();
     }
 
     private final Runnable task = new Runnable() {
