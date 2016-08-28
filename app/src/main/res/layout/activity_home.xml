@@ -9,4 +9,44 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/fab_size_normal"
+        android:layout_gravity="bottom"
+        android:background="@color/colorAccent"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+        <RadioButton
+            android:id="@+id/rd_home"
+            style="@style/main_btn_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_home"
+            android:text="首页" />
+        <RadioButton
+            android:id="@+id/rd_learn"
+            style="@style/main_btn_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_learn"
+            android:text="学习"
+            android:checked="false" />
+        <RadioButton
+            android:id="@+id/rd_exam"
+            style="@style/main_btn_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_exam"
+            android:text="考试" />
+        <RadioButton
+            android:id="@+id/rd_user"
+            style="@style/main_btn_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@mipmap/ic_user"
+            android:text="个人" />
+    </RadioGroup>
+
 </RelativeLayout>

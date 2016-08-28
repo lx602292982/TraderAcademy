@@ -9,9 +9,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.RadioGroup;
 
-import com.roughike.bottombar.BottomBar;
-import com.roughike.bottombar.OnMenuTabClickListener;
 import com.traderacademy.R;
 import com.traderacademy.supprot.utils.ToastUtils;
 import com.traderacademy.ui.BaseActivity;
@@ -28,11 +27,13 @@ import butterknife.ButterKnife;
 /**
  * Created by lixiang on 16/8/26.
  */
-public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTextClick {
+public class HomeActivity extends BaseActivity implements ViewPager.OnPageChangeListener,BaseActivity.onLeftTextClick, RadioGroup.OnCheckedChangeListener {
     @Bind(R.id.viewPager)
     ViewPager viewPager;
 
-    private BottomBar mBottomBar;
+    RadioGroup radioGroup;
+
+
     private List<Fragment> fragmentList;
 
     @Override
@@ -40,7 +41,6 @@ public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTex
         super.onCreate(savedInstanceState);
         ButterKnife.bind(this);
         initViewPager();
-        createBottomBar(savedInstanceState);
     }
 
     private void initViewPager() {
@@ -49,6 +49,7 @@ public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTex
         fragmentList.add(new LearmFragment());
         fragmentList.add(new ExamFragment());
         fragmentList.add(new UserFragment());
+
         viewPager.setAdapter(new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -60,67 +61,11 @@ public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTex
                 return fragmentList.size();
             }
         });
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
-            }
-
-            @Override
-            public void onPageSelected(int position) {
-                mBottomBar.selectTabAtPosition(position, true);
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {
-
-            }
-        });
-
+        //ViewPager显示第一个Fragment
+        viewPager.setCurrentItem(0);
+        viewPager.addOnPageChangeListener(this);
     }
 
-    private void createBottomBar(Bundle savedInstanceState) {
-        mBottomBar = BottomBar.attach(viewPager, savedInstanceState);
-        mBottomBar.setItemsFromMenu(R.menu.bottombar_tabs, new OnMenuTabClickListener() {
-            @Override
-            public void onMenuTabSelected(@IdRes int menuItemId) {
-                switch (menuItemId) {
-                    case R.id.bb_menu_recents:
-                        viewPager.setCurrentItem(0);
-                        setCenterTextView(R.string.home);
-                        break;
-                    case R.id.bb_menu_favorites:
-                        viewPager.setCurrentItem(1);
-                        setCenterTextView(R.string.learn);
-                        break;
-                    case R.id.bb_menu_nearby:
-                        viewPager.setCurrentItem(2);
-                        setCenterTextView(R.string.exam);
-                        break;
-                    case R.id.bb_menu_friends:
-                        viewPager.setCurrentItem(3);
-                        setCenterTextView(R.string.user);
-                        break;
-
-                }
-            }
-
-            @Override
-            public void onMenuTabReSelected(@IdRes int menuItemId) {
-
-            }
-        });
-        mBottomBar.mapColorForTab(0, ContextCompat.getColor(this, R.color.colorAccent));
-        mBottomBar.mapColorForTab(1, 0xFF5D4037);
-        mBottomBar.mapColorForTab(2, "#7B1FA2");
-        mBottomBar.mapColorForTab(3, "#FF4081");
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mBottomBar.onSaveInstanceState(outState);
-    }
 
     @Override
     public void setToolBar(Toolbar bar) {
@@ -136,13 +81,15 @@ public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTex
 
     @Override
     public void init() {
+        radioGroup  = (RadioGroup)findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(this);
     }
 
 
     @Override
     public boolean onMenuOpened(int featureId, Menu menu) {
         if (featureId == R.id.notice) {
-            ToastUtils.setToastContext(getApplicationContext(),"点击公告");
+            ToastUtils.setToastContext(getApplicationContext(), "点击公告");
         }
         return true;
     }
@@ -155,6 +102,57 @@ public class HomeActivity extends BaseActivity implements BaseActivity.onLeftTex
 
     @Override
     public void onLeftClick() {
-        ToastUtils.setToastContext(getApplicationContext(),"点击签到");
+        ToastUtils.setToastContext(getApplicationContext(), "点击签到");
+    }
+
+    @Override
+    public void onCheckedChanged(RadioGroup group, int checkedId) {
+        switch (checkedId) {
+            case R.id.rd_home:
+                viewPager.setCurrentItem(0, false);
+                setCenterTextView(R.string.home);
+                break;
+            case R.id.rd_learn:
+                viewPager.setCurrentItem(1, false);
+                setCenterTextView(R.string.learn);
+                break;
+            case R.id.rd_exam:
+                viewPager.setCurrentItem(2, false);
+                setCenterTextView(R.string.exam);
+                break;
+            case R.id.rd_user:
+                viewPager.setCurrentItem(3, false);
+                setCenterTextView(R.string.user);
+                break;
+        }
+
+    }
+
+    @Override
+    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+    }
+
+    @Override
+    public void onPageSelected(int position) {
+        switch (position) {
+            case 0:
+                radioGroup.check(R.id.rd_home);
+                break;
+            case 1:
+                radioGroup.check(R.id.rd_learn);
+                break;
+            case 2:
+                radioGroup.check(R.id.rd_exam);
+                break;
+            case 3:
+                radioGroup.check(R.id.rd_user);
+                break;
+        }
+    }
+
+    @Override
+    public void onPageScrollStateChanged(int state) {
+
     }
 }
